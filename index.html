@@ -22,12 +22,20 @@
       --danger: #ef4444;         /* red */
       --radius: 18px;
       --shadow: 0 10px 30px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.03);
+.card {
+  position: relative; /* để định vị tuyệt đối con */
+}
+
 .like-btn {
   margin-top:.6rem;
   cursor:pointer;
   user-select:none;
   font-weight:600;
   color:#f87171;
+  position: absolute;
+  bottom: 10px;
+  right: 12px;
+  margin-top: 0; /* bỏ margin cũ */
 }
 .like-btn:hover { transform:scale(1.05); }
     }
@@ -459,15 +467,17 @@ const othersGrid = document.getElementById('othersGrid');
       onkeypress="if(event.key==='Enter')openProfile(${i})">
       <div class="thumb">${c.img?`<img alt="${c.name}" src="${c.img}" loading="lazy">`:''}</div>
       <div class="body">
-        <div class="title">${c.name}</div>
-        <div class="lead" style="color:var(--muted)">${c.role}</div>
-        <div class="tags">
-          ${c.haki?.map(h=>`<span class='chip'>${h}</span>`).join('')}
-          ${c.fruit?`<span class='chip'>🍏 ${c.fruit}</span>`:''}
-          <span class='chip'>💰 ${c.bounty}</span>
-        <div class="like-btn" onclick="event.stopPropagation();likeCharacter('crew', ${i})">
-          ❤️ ${c.likes || 0}
-        </div>
+  <div class="title">${c.name}</div>
+  <div class="lead" style="color:var(--muted)">${c.role}</div>
+  <div class="tags">
+    ${c.haki?.map(h=>`<span class='chip'>${h}</span>`).join('')}
+    ${c.fruit?`<span class='chip'>🍏 ${c.fruit}</span>`:''}
+    <span class='chip'>💰 ${c.bounty}</span>
+  </div>
+</div>
+<div class="like-btn" onclick="event.stopPropagation();likeCharacter('crew', ${i})">
+  ❤️ ${c.likes || 0}
+</div>
       </div>
     </article>
   `).join('');
