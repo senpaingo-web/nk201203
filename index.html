@@ -222,27 +222,35 @@
       </div>
       <div class="grid cols-3">
         <article class="card">
-          <div class="thumb" style="background:linear-gradient(135deg, rgba(56,189,248,.2), rgba(167,139,250,.2))"></div>
+          <div class="thumb">
+  <img src="https://media1.tenor.com/m/BWk4_NBCmtgAAAAC/one-piece.gif" alt="Mục tiêu">
+</div>
           <div class="body">
             <div class="title">Mục tiêu</div>
-            <p class="lead">Lưu trữ hồ sơ nhân vật, phân tích arc, và tổng hợp giả thuyết chất lượng cao – tất cả ở một nơi.</p>
-            <div class="tags"><span class="chip">lưu trữ</span><span class="chip">phân tích</span></div>
+            <p class="lead">Mọi hải tặc đều nhắm đến kho báu One Piece và danh hiệu Vua Hải Tặc!</p>
+            <div class="tags"><span class="chip">Kho Báu One Piece</span><span class="chip">Vua Hải Tặc</span></div>
           </div>
         </article>
         <article class="card">
-          <div class="thumb" style="background:linear-gradient(135deg, rgba(16,185,129,.25), rgba(56,189,248,.2))"></div>
+          <div class="thumb">
+
+  <img src="https://media1.tenor.com/m/143ZiFOUsFsAAAAd/whitebeard-roger.gif" alt="Haki">
+</div>
           <div class="body">
-            <div class="title">Nguyên tắc</div>
-            <p class="lead">Chính xác, có nguồn, tránh spoil vô tội vạ. Tôn trọng tác giả và cộng đồng.</p>
-            <div class="tags"><span class="chip">tôn trọng</span><span class="chip">chất lượng</span></div>
+            <div class="title">Haki</div>
+            <p class="lead">Những kẻ được gọi là huyền thoại đều có sức mạnh Haki đỉnh cao.</p>
+            <div class="tags"><span class="chip">Haki Đỉnh Cao</span><span class="chip">Huyền Thoại</span></div>
           </div>
         </article>
         <article class="card">
-          <div class="thumb" style="background:linear-gradient(135deg, rgba(245,158,11,.25), rgba(239,68,68,.2))"></div>
+          <div class="thumb">
+
+          <img src="https://media1.tenor.com/m/UCJLb65vNLEAAAAC/nika-devil-fruit-one-piece.gif" alt="Trái Ác Quỷ">
+</div>
           <div class="body">
-            <div class="title">Công cụ</div>
-            <p class="lead">Website thuần HTML/CSS/JS tối ưu, không phụ thuộc framework. Dễ deploy trên GitHub Pages/Netlify.</p>
-            <div class="tags"><span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">JS</span></div>
+            <div class="title">Trái Ác Quỷ</div>
+            <p class="lead">Trái Ác Quỷ mang lại sức mạnh cho người ăn, nhưng kẻ đó sẽ bị biển cả quyền rủa không thể bơi.</p>
+            <div class="tags"><span class="chip">Trái Ác Quỷ</span><span class="chip">Sức Mạnh</span><span class="chip">Biển Cả Quyền Rủa</span></div>
           </div>
         </article>
       </div>
@@ -332,7 +340,7 @@
       <div class="section-head">
         <div>
           <h2>Blog & Ghi chú</h2>
-          <p class="lead">Bài viết ngắn, cảm nhận, hoặc lý thuyết – không spoil tiêu cực.</p>
+          <p class="lead">Bài viết ngắn, cảm nhận, hoặc lý thuyết.</p>
         </div>
         <a class="btn" href="#contact">Gợi ý chủ đề?</a>
       </div>
@@ -515,10 +523,25 @@ const othersGrid = document.getElementById('othersGrid');
   ];
 
   const posts = [
-    { title: 'Haki Bá Vương – bản chất là gì?', excerpt: 'Tổng hợp lý thuyết và ví dụ minh họa.', date: '2025-08-01' },
-    { title: '5 khoảnh khắc Robin làm tim tan chảy', excerpt: 'Kho ảnh + phân tích cảm xúc.', date: '2025-07-18' },
-    { title: 'Zoro vs King – điểm bùng nổ sức mạnh', excerpt: 'Mổ xẻ cơ chế “lửa” và sức bền.', date: '2025-06-30' },
-  ];
+     { 
+    title: 'Haki Bá Vương – bản chất là gì?', 
+    excerpt: 'Đỉnh cao sức mạnh của Haki Bá Vương khủng khiếp tới mức nào?', 
+    date: '2025-08-01',
+    img: 'https://media1.tenor.com/m/wwXI9XpRKLoAAAAd/one-piece-one-piece-stampede.gif'
+  },
+  { 
+    title: 'Cuộc đời của Bartholomew Kuma.', 
+    excerpt: 'Phân tích cuộc đời của người anh hùng trong thế giới One Piece.', 
+    date: '2025-07-18',
+    img: 'https://media1.tenor.com/m/l7jZAMFlNlwAAAAC/one-piece-kuma.gif'
+  },
+  { 
+    title: 'Tiềm năng sức mạnh của Gear 5', 
+    excerpt: 'Sức mạnh trí tưởng tượng của Luffy kinh khủng tới đâu?', 
+    date: '2025-06-30',
+    img: 'https://media1.tenor.com/m/O7t28Xrtf5YAAAAd/one-piece-gear-5.gif'
+  },
+];
 
     // ======= RUNTIME =======
     const $ = (s, root=document) => root.querySelector(s);
@@ -611,8 +634,20 @@ function likeCharacter(type, i){
 
     // Posts
     const pgrid = $('#postGrid');
-    pgrid.innerHTML = posts.map(p=>`<article class='card'><div class='thumb' style='background:linear-gradient(135deg, rgba(56,189,248,.16), rgba(167,139,250,.16))'></div><div class='body'><div class='title'>${p.title}</div><p class='lead'>${p.excerpt}</p><div class='tags'><span class='chip'>${new Date(p.date).toLocaleDateString('vi-VN')}</span></div></div></article>`).join('');
-
+pgrid.innerHTML = posts.map(p=>`
+  <article class='card'>
+    <div class='thumb'>
+      ${p.img ? `<img src="${p.img}" alt="${p.title}" loading="lazy">` : ''}
+    </div>
+    <div class='body'>
+      <div class='title'>${p.title}</div>
+      <p class='lead'>${p.excerpt}</p>
+      <div class='tags'>
+        <span class='chip'>${new Date(p.date).toLocaleDateString('vi-VN')}</span>
+      </div>
+    </div>
+  </article>
+`).join('');
     // Init
     renderCrew(crew);
     renderDots();
@@ -625,4 +660,3 @@ let likedOthers = [];
 </script>
 </body>
 </html>
-
