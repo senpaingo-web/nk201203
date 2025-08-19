@@ -78,9 +78,17 @@
     .badge{padding:.4rem .6rem; border-radius:9px; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.08); font-size:.9rem}
     .hero-card{border:1px solid rgba(255,255,255,.08); background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
                border-radius:var(--radius); padding:1rem; box-shadow:var(--shadow)}
-    .hero-img{aspect-ratio:4/3; border-radius:14px; background:linear-gradient(135deg, rgba(56,189,248,.25), rgba(167,139,250,.25));
-              position:relative; overflow:hidden}
-    .hero-img::after{content:""; position:absolute; inset:0; background-image:url(''); background-size:cover; background-position:center; opacity:.18;}
+    .hero-img {
+  border-radius: 14px;
+  overflow: hidden;
+  display: inline-block; /* để vừa với ảnh */
+}
+.hero-img img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: 14px;
+}
 
     /* Section */
     section{padding:3rem 0}
@@ -188,7 +196,7 @@
   <div class="hero-img" aria-label="Hero art">
     <img 
       alt="One Piece collage" 
-      src="https://images3.alphacoders.com/134/thumb-1920-1342304.jpeg" 
+      src="https://media1.tenor.com/m/gywEgvHO37QAAAAd/one-piece-happy.gif" 
       style="width:100%; height:auto; border-radius:1rem;"
     >
   </div>
@@ -376,13 +384,69 @@
     </div>
   </div>
 
+<script type="module">
+  // Import Firebase SDK
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-app.js";
+  import { getDatabase, ref, get, update, onValue } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-database.js";
+
+  // Cấu hình Firebase (thay bằng của bạn)
+  const firebaseConfig = {
+  apiKey: "AIzaSyCjj7mgcn-l9dBcm5s4C5SN1OfrBsL0ozU",
+  authDomain: "nk201203-620de.firebaseapp.com",
+  databaseURL: "https://nk201203-620de-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "nk201203-620de",
+  storageBucket: "nk201203-620de.firebasestorage.app",
+  messagingSenderId: "143532095711",
+  appId: "1:143532095711:web:e616c3939b96fa22fa116a",
+  measurementId: "G-KESCSMWNZ4"
+};
+
+  // Khởi tạo
+  const app = initializeApp(firebaseConfig);
+  const db = getDatabase(app);
+
+  // Hàm Like
+window.likeCharacter = function(type, i) {
+  const id = type + "_" + i;
+
+  // Nếu đã like rồi thì không cho like nữa
+  if (localStorage.getItem("liked_" + id)) {
+    alert("Bạn đã like nhân vật này rồi!");
+    return;
+  }
+
+  const refPath = ref(db, "likes/" + id);
+
+  get(refPath).then(snapshot => {
+    let current = snapshot.exists() ? snapshot.val() : 0;
+    update(ref(db, "likes"), { [id]: current + 1 }).then(() => {
+      // Đánh dấu đã like trong localStorage
+      localStorage.setItem("liked_" + id, "true");
+    });
+  });
+}
+
+  // Load like từ Firebase và hiển thị
+  function loadLikes() {
+    const refPath = ref(db, "likes");
+    onValue(refPath, snapshot => {
+      const data = snapshot.val() || {};
+      crew.forEach((c, i) => c.likes = data["crew_" + i] || 0);
+      others.forEach((c, i) => c.likes = data["others_" + i] || 0);
+      renderCrew(crew);
+      renderOthers(others);
+    });
+  }
+
+  loadLikes();
+</script>
 <script>
   // ======= DATA (có ảnh chuẩn) =======
   const crew = [
-    { name: 'Monkey D. Luffy', role: 'Thuyền trưởng', bounty: '3,000,000,000', haki: ['Haki Vũ Trang (Busōshoku no Haki)','Haki Quan Sát (Kenbunshoku no Haki)','Haki Bá Vương (Haōshoku no Haki)'], fruit: 'Hito Hito no Mi, Model: Nika', img: 'https://media1.tenor.com/m/Qm01Xi99XvgAAAAd/luffy-gear-5.gif', quote: 'Ta là Monkey D. Luffy, và ta sẽ trở thành Vua Hải Tặc! Shishishi.' },
-    { name: 'Roronoa Zoro', role: 'Kiếm sĩ', bounty: '1,111,000,000', haki: ['Haki Vũ trang','Haki Quan sát', 'Haki Bá Vương (Được Gaban xác nhận)'], fruit: null, img: 'https://media1.tenor.com/m/4sYOFaCmMcoAAAAd/one-piece-zoro-vs-king.gif', quote: '<p>Tôi sẽ không bao giờ thua nữa, có ý kiến gì không Vua Hải Tặc tương lai?!<br><br>Để giúp Luffy trở thành Vua Hải Tặc, ta sẽ trở thành King Of Hell (Vua Địa Ngục)</p>' },
-    { name: 'Nami', role: 'Hoa tiêu', bounty: '366,000,000', haki: [], fruit: null, img: 'https://media1.tenor.com/m/19dEzrdZqDIAAAAC/nami.gif', quote: '<p>Ước mơ của tôi là vẽ bản đồ toàn thế giới!<br><br>Luffy chắc chắn sẽ trở thành Vua Hải Tặc!</p>' },
-    { name: 'Usopp', role: 'Xạ thủ', bounty: '500,000,000', haki: ['Haki Quan sát'], fruit: null, img: 'https://media1.tenor.com/m/u0INc77fl3IAAAAC/god-usopp.gif', quote: '<p>Tôi sẽ trở thành chiến binh dũng cảm nhất biển cả!<br><br>Tôi không quan tâm nếu trông thật thảm hại! Tôi sống sót, đó là những gì tôi làm! Và đó là lý do tôi ở đây!</p>' },
+    { name: 'Monkey D. Luffy', role: 'Thuyền trưởng', bounty: '3,000,000,000', haki: ['Haki Vũ Trang (Busōshoku no Haki)','Haki Quan Sát (Kenbunshoku no Haki)','Haki Bá Vương (Haōshoku no Haki)'], fruit: 'Hito Hito no Mi, Model: Nika', img: 'https://media1.tenor.com/m/NAWlmrx6dzwAAAAd/gum-gum-white-star-gun-white-star-gun.gif', quote: 'Ta là Monkey D. Luffy, và ta sẽ trở thành Vua Hải Tặc! Shishishi.' },
+    { name: 'Roronoa Zoro', role: 'Kiếm sĩ', bounty: '1,111,000,000', haki: ['Haki Vũ trang','Haki Quan sát', 'Haki Bá Vương (Được Gaban xác nhận)'], fruit: null, img: 'https://media1.tenor.com/m/kCFWuun7w-MAAAAd/zoro-vs-king-zoro.gif', quote: '<p>Tôi sẽ không bao giờ thua nữa, có ý kiến gì không Vua Hải Tặc tương lai?!<br><br>Để giúp Luffy trở thành Vua Hải Tặc, ta sẽ trở thành King Of Hell (Vua Địa Ngục)</p>' },
+    { name: 'Nami', role: 'Hoa tiêu', bounty: '366,000,000', haki: [], fruit: null, img: 'https://media1.tenor.com/m/4Y9tMDtTUvIAAAAd/one-piece-stampede.gif', quote: '<p>Ước mơ của tôi là vẽ bản đồ toàn thế giới!<br><br>Luffy chắc chắn sẽ trở thành Vua Hải Tặc!</p>' },
+    { name: 'Usopp', role: 'Xạ thủ', bounty: '500,000,000', haki: ['Haki Quan sát'], fruit: null, img: 'https://media1.tenor.com/m/qohEC4YAUyAAAAAC/one-piece-sugar.gif', quote: '<p>Tôi sẽ trở thành chiến binh dũng cảm nhất biển cả!<br><br>Tôi không quan tâm nếu trông thật thảm hại! Tôi sống sót, đó là những gì tôi làm! Và đó là lý do tôi ở đây!</p>' },
     { name: 'Sanji', role: 'Đầu bếp', bounty: '1,032,000,000', haki: ['Haki Vũ trang','Haki Quan sát'], fruit: null, img: 'https://media1.tenor.com/m/Q-8_BLg-Zq8AAAAC/one-piece-sanji.gif', quote: 'Tôi sẽ làm những việc cậu không thể làm và cậu sẽ làm những thứ tôi không làm được.' },
     { name: 'Tony Tony Chopper', role: 'Bác sĩ', bounty: '1,000', haki: [], fruit: 'Hito Hito no Mi', img: 'https://media1.tenor.com/m/-uumzerEK8EAAAAd/egghead-one-piece.gif', quote: '<p>Trước kia, lý do em muốn trở thành con người là vì muốn có bạn.<br><br>Giờ thì để giúp được anh Luffy và mọi người em sẽ trở thành một con quái <br><br>À nè, kẹo bông ngon lắm luôn cậu nên thử :3</p>' },
     { name: 'Nico Robin', role: 'Nhà khảo cổ', bounty: '930,000,000', haki: [], fruit: 'Hana Hana no Mi', img: 'https://media1.tenor.com/m/2vWJVIz0aYkAAAAC/demon-demon-nico-robin.gif', quote: '<p>TÔI MUỐN ĐƯỢC SỐNG.<br><br>Vì đồng đội, ta sẽ trở thành một con quỷ!<br><br>Con muốn ông khen con vì đã sống được tới giờ, ông Saul!</p>' },
@@ -455,6 +519,7 @@ const othersGrid = document.getElementById('othersGrid');
     { title: '5 khoảnh khắc Robin làm tim tan chảy', excerpt: 'Kho ảnh + phân tích cảm xúc.', date: '2025-07-18' },
     { title: 'Zoro vs King – điểm bùng nổ sức mạnh', excerpt: 'Mổ xẻ cơ chế “lửa” và sức bền.', date: '2025-06-30' },
   ];
+
     // ======= RUNTIME =======
     const $ = (s, root=document) => root.querySelector(s);
     const $$ = (s, root=document) => Array.from(root.querySelectorAll(s));
@@ -557,32 +622,6 @@ function likeCharacter(type, i){
 // Mảng trạng thái like cho từng nhóm
 let likedCrew = [];
 let likedOthers = [];
-
-function likeCharacter(type, i){
-  if(type === 'crew'){
-    crew[i].likes = crew[i].likes || 0;
-    if(likedCrew[i]) {
-      // bỏ like
-      crew[i].likes--;
-      likedCrew[i] = false;
-    } else {
-      // thêm like
-      crew[i].likes++;
-      likedCrew[i] = true;
-    }
-    renderCrew(crew);
-  } else {
-    others[i].likes = others[i].likes || 0;
-    if(likedOthers[i]) {
-      others[i].likes--;
-      likedOthers[i] = false;
-    } else {
-      others[i].likes++;
-      likedOthers[i] = true;
-    }
-    renderOthers(others);
-  }
-}
 </script>
 </body>
 </html>
