@@ -37,6 +37,7 @@
   right: 12px;
   margin-top: 0; /* bỏ margin cũ */
 }
+
 .like-btn:hover { transform:scale(1.05); }
     }
     *{box-sizing:border-box}
@@ -153,6 +154,51 @@
     /* Small niceties */
     .glow{box-shadow: 0 0 0 0 rgba(56,189,248,.0); animation: pulse 2.8s infinite}
     @keyframes pulse{0%{box-shadow: 0 0 0 0 rgba(56,189,248,.35)} 70%{box-shadow: 0 0 0 20px rgba(56,189,248,0)} 100%{box-shadow: 0 0 0 0 rgba(56,189,248,0)}}
+
+.btn-nami {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem; /* khoảng cách icon ↔ chữ */
+  margin: 16px auto 0;   /* auto để nút luôn nằm giữa */
+  padding: 0.85rem 1.6rem;
+  border-radius: 40px;
+  font-weight: 700;
+  font-size: 1rem;
+  color: #fff;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+  background: linear-gradient(135deg, #f97316, #facc15, #38bdf8);
+  background-size: 250% 250%;
+  animation: namiGradient 6s ease infinite;
+  border: 2px solid #000;   /* viền đen rõ ràng */
+  box-shadow: 0 0 15px rgba(56,189,248,.45);
+  text-decoration: none;
+  cursor: pointer;
+  transition: all .25s ease;
+  width: fit-content; /* vừa với nội dung */
+}
+
+.btn-nami:hover {
+  transform: translateY(-3px) scale(1.07);
+  box-shadow: 0 0 25px rgba(249,115,22,.6),
+              0 0 50px rgba(56,189,248,.6);
+}
+
+/* Gradient nền động */
+@keyframes namiGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Icon Nami chibi */
+.btn-nami img {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 0 6px rgba(0,0,0,0.5);
+}
   </style>
 </head>
 <body>
@@ -180,11 +226,11 @@
       <div>
         <div class="kicker"><span class="chip">Fanpage cá nhân</span> <span>• Thế giới One Piece qua góc nhìn của N.K</span></div>
         <h1>Cùng khám phá về băng Mũ Rơm – một thế giới về <span style="background:linear-gradient(90deg, #38bdf8, #a78bfa); -webkit-background-clip:text; color:transparent">hải tặc</span>.</h1>
-        <p class="lead">Tổng hợp nhân vật, khoảnh khắc, lý thuyết, và ghi chép hành trình chinh phục Đại Hải Trình. Tối ưu cho di động, nhanh, gọn, đẹp, và cực kỳ dễ chỉnh sửa.</p>
+        <p class="lead">Tổng hợp nhân vật, khoảnh khắc, lý thuyết, và ghi chép hành trình chinh phục Đại Hải Trình.</p>
         <div class="meta">
           <span class="badge">⚡ Mượt mà</span>
-          <span class="badge">📱 Responsive</span>
-          <span class="badge">🌓 Dark-first</span>
+          <span class="badge">📱 Tiện lợi</span>
+          <span class="badge">🌓 Nền tối</span>
           <span class="badge">🧭 UI hiện đại</span>
         </div> 
 <div style="display:flex; gap:.8rem; margin-top:1.1rem"> 
@@ -223,36 +269,58 @@
       <div class="grid cols-3">
         <article class="card">
           <div class="thumb">
+		  
   <img src="https://media1.tenor.com/m/BWk4_NBCmtgAAAAC/one-piece.gif" alt="Mục tiêu">
 </div>
-          <div class="body">
-            <div class="title">Mục tiêu</div>
-            <p class="lead">Mọi hải tặc đều nhắm đến kho báu One Piece và danh hiệu Vua Hải Tặc!</p>
-            <div class="tags"><span class="chip">Kho Báu One Piece</span><span class="chip">Vua Hải Tặc</span></div>
-          </div>
-        </article>
-        <article class="card">
-          <div class="thumb">
+  <div class="body">
+    <div class="title">Mục tiêu</div>
+    <p class="lead">Mọi hải tặc đều nhắm đến kho báu One Piece và danh hiệu...</p>
+    <div class="tags">
+      <span class="chip">Kho Báu One Piece</span>
+      <span class="chip">Vua Hải Tặc</span>
+    </div>
+    <a href="OnePiece.html" class="btn-nami">
+  <img src="https://media.tenor.com/TK8yHl9vDREAAAAj/one-piece-anime.gif" alt="Nami Chibi">
+  Xem thêm
+</a>
+  </div>
+</article>
 
-  <img src="https://media1.tenor.com/m/143ZiFOUsFsAAAAd/whitebeard-roger.gif" alt="Haki">
-</div>
-          <div class="body">
-            <div class="title">Haki</div>
-            <p class="lead">Những kẻ được gọi là huyền thoại đều có sức mạnh Haki đỉnh cao.</p>
-            <div class="tags"><span class="chip">Haki Đỉnh Cao</span><span class="chip">Huyền Thoại</span></div>
-          </div>
-        </article>
-        <article class="card">
-          <div class="thumb">
-
-          <img src="https://media1.tenor.com/m/UCJLb65vNLEAAAAC/nika-devil-fruit-one-piece.gif" alt="Trái Ác Quỷ">
-</div>
-          <div class="body">
-            <div class="title">Trái Ác Quỷ</div>
-            <p class="lead">Trái Ác Quỷ mang lại sức mạnh cho người ăn, nhưng kẻ đó sẽ bị biển cả quyền rủa không thể bơi.</p>
-            <div class="tags"><span class="chip">Trái Ác Quỷ</span><span class="chip">Sức Mạnh</span><span class="chip">Biển Cả Quyền Rủa</span></div>
-          </div>
-        </article>
+<article class="card">
+  <div class="thumb">
+    <img src="https://media1.tenor.com/m/143ZiFOUsFsAAAAd/whitebeard-roger.gif" alt="Haki">
+  </div>
+  <div class="body">
+    <div class="title">Haki</div>
+    <p class="lead">Những kẻ được gọi là huyền thoại đều có sức mạnh Haki đỉnh cao.</p>
+    <div class="tags">
+      <span class="chip">Haki Đỉnh Cao</span>
+      <span class="chip">Huyền Thoại</span>
+    </div>
+    <a href="OnePiece.html" class="btn-nami">
+  <img src="https://media.tenor.com/TK8yHl9vDREAAAAj/one-piece-anime.gif" alt="Nami Chibi">
+  Xem thêm
+</a>
+  </div>
+</article>
+		
+<article class="card">
+  <div class="thumb">
+    <img src="https://media1.tenor.com/m/UCJLb65vNLEAAAAC/nika-devil-fruit-one-piece.gif" alt="Trái Ác Quỷ">
+  </div>
+  <div class="body">
+    <div class="title">Trái Ác Quỷ</div>
+    <p class="lead">Trái Ác Quỷ mang lại sức mạnh cho người ăn, nhưng kẻ đó sẽ bị...</p>
+    <div class="tags">
+      <span class="chip">Trái Ác Quỷ</span>
+      <span class="chip">Biển Cả Quyền Rủa</span>
+    </div>
+    <a href="OnePiece.html" class="btn-nami">
+  <img src="https://media.tenor.com/TK8yHl9vDREAAAAj/one-piece-anime.gif" alt="Nami Chibi">
+  Xem thêm
+</a>
+  </div>
+</article>
       </div>
     </div>
   </section>
@@ -263,7 +331,7 @@
       <div class="section-head">
         <div>
           <h2>Băng Mũ Rơm</h2>
-          <p class="lead">Tìm tên nhanh nhân vật bạn thích.</p>
+          <p class="lead">Các thành viên chính của Băng Mũ Rơm (Bấm vào từng nhân vật để xem "Hồ sơ nhân vật")</p>
         </div>
         <div class="searchbar" role="search">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 21l-4.3-4.3" stroke="currentColor" stroke-width="1.6"/><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.6"/></svg>
@@ -281,7 +349,7 @@
     <div class="section-head">
       <div>
         <h2>Các nhân vật khác</h2>
-        <p class="lead">Những nhân vật quan trọng ngoài băng Mũ Rơm.</p>
+        <p class="lead">Những nhân vật quan trọng ngoài băng Mũ Rơm. (Bấm vào từng nhân vật để xem "Hồ sơ nhân vật")</p>
       </div>
 <div class="searchbar" role="search">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 21l-4.3-4.3" stroke="currentColor" stroke-width="1.6"/><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.6"/></svg>
@@ -321,7 +389,7 @@
   </div>
 </section>
 
-  <!-- TIMELINE -->
+  <!-- a -->
   <section id="timeline">
     <div class="container">
       <div class="section-head">
@@ -451,7 +519,7 @@ window.likeCharacter = function(type, i) {
 <script>
   // ======= DATA (có ảnh chuẩn) =======
   const crew = [
-    { name: 'Monkey D. Luffy', role: 'Thuyền trưởng', bounty: '3,000,000,000', haki: ['Haki Vũ Trang','Haki Quan Sát','Haki Bá Vương'], fruit: 'Hito Hito no Mi, Model: Nika', img: 'https://media1.tenor.com/m/NAWlmrx6dzwAAAAd/gum-gum-white-star-gun-white-star-gun.gif', quote: 'Ta là Monkey D. Luffy, và ta sẽ trở thành Vua Hải Tặc!<br><br>Bị Hải Quân giết, hay đi theo tôi. Anh chọn cái nào? (Lúc giải cứu Zoro)<br><br>Arlong là... Thằng nào?<br><br>Tui muốn ăn thịt!!<br><br>Anh hùng ư? Không! Bọn tớ là hải tặc! Tôi thích anh hùng, nhưng tớ không muốn làm anh hùng! Cậu có biết anh hùng là gì không? Giả sử có một miếng thịt… anh hùng sẽ chia nó cho mọi người. Còn hải tặc sẽ mở tiệc và ăn hết! Tớ thì muốn ăn hết thịt cơ!! (Nói với Vivi)<br><br>Dừng lại!!! Tôi không muốn nghe!!! Nếu phải đi một chuyến phiêu lưu nhàm chán như vậy, thì tôi thà bỏ làm hải tặc luôn! Tôi không muốn biết kho báu ở đâu, hay thậm chí nó có tồn tại hay không!!! Tôi sẽ tự mình tìm ra nó!!! Đó mới là ý nghĩa của việc trở thành Vua Hải Tặc!!! (Nói với Usopp và Robin)<br><br>Tôi không muốn chinh phục bất cứ thứ gì. Tôi chỉ nghĩ rằng kẻ tự do nhất trên biển cả này… chính là Vua Hải Tặc!<br><br>Sớm thôi, tôi sẽ trở thành Vua Hải Tặc!<br><br>Đừng hòng làm hoa tiêu của ta phải rơi nước mắt!!' },
+    { name: 'Monkey D. Luffy', role: 'Thuyền trưởng', bounty: '3,000,000,000', haki: ['Haki Vũ Trang','Haki Quan Sát','Haki Bá Vương'], fruit: 'Hito Hito no Mi, Model: Thần Mặt Trời Nika', img: 'https://media1.tenor.com/m/NAWlmrx6dzwAAAAd/gum-gum-white-star-gun-white-star-gun.gif', quote: 'Ta là Monkey D. Luffy, và ta sẽ trở thành Vua Hải Tặc!<br><br>Bị Hải Quân giết, hay đi theo tôi. Anh chọn cái nào? (Lúc giải cứu Zoro)<br><br>Arlong là... Thằng nào?<br><br>Tui muốn ăn thịt!!<br><br>Anh hùng ư? Không! Bọn tớ là hải tặc! Tôi thích anh hùng, nhưng tớ không muốn làm anh hùng! Cậu có biết anh hùng là gì không? Giả sử có một miếng thịt… anh hùng sẽ chia nó cho mọi người. Còn hải tặc sẽ mở tiệc và ăn hết! Tớ thì muốn ăn hết thịt cơ!! (Nói với Vivi)<br><br>Dừng lại!!! Tôi không muốn nghe!!! Nếu phải đi một chuyến phiêu lưu nhàm chán như vậy, thì tôi thà bỏ làm hải tặc luôn! Tôi không muốn biết kho báu ở đâu, hay thậm chí nó có tồn tại hay không!!! Tôi sẽ tự mình tìm ra nó!!! Đó mới là ý nghĩa của việc trở thành Vua Hải Tặc!!! (Nói với Usopp và Robin)<br><br>Tôi không muốn chinh phục bất cứ thứ gì. Tôi chỉ nghĩ rằng kẻ tự do nhất trên biển cả này… chính là Vua Hải Tặc!<br><br>Sớm thôi, tôi sẽ trở thành Vua Hải Tặc!<br><br>Đừng hòng làm hoa tiêu của ta phải rơi nước mắt!!' },
     { name: 'Roronoa Zoro', role: 'Kiếm sĩ', bounty: '1,111,000,000', haki: ['Haki Vũ trang','Haki Quan sát', 'Haki Bá Vương (Được Gaban xác nhận)'], fruit: null, img: 'https://media1.tenor.com/m/kCFWuun7w-MAAAAd/zoro-vs-king-zoro.gif', quote: 'Được rồi! Thà làm hải tặc còn hơn chết ở đây!<br><br>Nếu ngươi làm bất cứ điều gì khiến ta phải từ bỏ tham vọng… thì mạng sống của ngươi sẽ kết thúc trên lưỡi kiếm của ta!<br><br>Tôi sẽ không bao giờ thua nữa, có ý kiến gì không Vua Hải Tặc tương lai?!<br><br>Nếu ta còn không thể bảo vệ giấc mơ của thuyền trưởng mình, thì bất cứ tham vọng nào của ta cũng chỉ là lời nói suông…<br><br>Ta sẽ trở thành kiếm sĩ vĩ đại nhất thế giới! Những gì còn lại với ta chỉ là định mệnh! Danh tiếng của ta có thể tai tiếng… nhưng nó sẽ làm cả thế giới phải chấn động!!!<br><br>Vậy thì sao nhỉ. ‘May mắn’ của ta đối đầu với ‘lời nguyền’ của thanh kiếm này. Muốn xem cái nào mạnh hơn không..? Nếu ta thua, thì ta cũng chỉ là một người đàn ông bình thường. (Zoro thử thanh Sandai Kitetsu)<br><br>Đây là hải tặc chứ không phải là trò chơi con nít!<br><br>Để giúp Luffy trở thành Vua Hải Tặc, ta sẽ trở thành King Of Hell (Vua Địa Ngục)' },
     { name: 'Nami', role: 'Hoa tiêu', bounty: '366,000,000', haki: [], fruit: null, img: 'https://media1.tenor.com/m/4Y9tMDtTUvIAAAAd/one-piece-stampede.gif', quote: 'Tại sao? Đây là công việc mà Hải quân các người làm sao? Các người có biết Arlong đã giết hại bao nhiêu người và phá hủy bao nhiêu ngôi làng rồi không?! Dưới sự thống trị của hắn, tất cả mọi người đều bị đối xử như nô lệ! Vậy mà các người chẳng làm gì cả!! Và bây giờ các người chỉ muốn tìm kho báu của một tên trộm thôi sao? Đây là bộ mặt thật của chính phủ à?!<br><br>Đừng có mà chạm đôi bàn tay bẩn thiểu đó vào vườn cam của Bellemere-san<br><br>Luffy, giúp tôi với...<br><br>Nếu anh nghĩ tôi chỉ là một cô gái dễ thương bình thường thì anh nhầm to rồi đấy!<br><br>Ước mơ của tôi là vẽ bản đồ toàn thế giới!<br><br>Cuộc đời giống như một cây bút chì, chắc chắn sẽ mòn đi, nhưng sẽ để lại những nét chữ tuyệt đẹp của cuộc sống.<br><br>Luffy chắc chắn sẽ trở thành Vua Hải Tặc!' },
     { name: 'Usopp', role: 'Xạ thủ', bounty: '500,000,000', haki: ['Haki Quan sát'], fruit: null, img: 'https://media1.tenor.com/m/qohEC4YAUyAAAAAC/one-piece-sugar.gif', quote: 'Sẽ có lúc một người đàn ông phải đứng lên và chiến đấu! Đó chính là khi ước mơ của bạn mình bị đem ra cười nhạo. Luffy sẽ không chết đâu... Ta biết chắc cậu ấy sẽ trở thành Vua Hải Tặc một ngày nào đó... và ta sẽ không để bất cứ ai cười nhạo điều đó!<br><br>Tôi sẽ trở thành chiến binh dũng cảm nhất biển cả!<br><br>Ta là Vua Xạ Thủ, Sogeking.<br><br>Tôi không quan tâm nếu trông thật thảm hại! Tôi sống sót, đó là những gì tôi làm! Và đó là lý do tôi ở đây!' },
@@ -466,8 +534,10 @@ window.likeCharacter = function(type, i) {
   const others = [
     { name: 'Boa Hancock', role: 'Cựu Thất Vũ Hải<br><br>Nữ hoàng hải tặc', bounty: '1,659,000,000', haki: ['Haki Vũ trang','Haki Quan sát','Haki Bá Vương'], fruit: 'Mero Mero no Mi', img: 'https://media1.tenor.com/m/cPeAsi9pPGsAAAAd/one-piece-boa-hancock.gif', quote: 'Ta sẽ làm mê hoặc từng người trong số các ngươi.<br><br>Ta muốn cưới Luffy...<br><br>Bỏ bàn tay bẩn thỉu đó ra khỏi người ta!<br><br>Rayleigh.<br><br>Dù ta có làm gì đi nữa, tất cả mọi việc ta làm đều sẽ được tha thứ… vì ta quá đẹp!<br><br>Luffy không giống bất kỳ ai khác… vì vậy ta mới yêu anh ấy.' },
     { name: 'Bartholomew Kuma', role: '<p>Cựu Thất Vũ Hải.<br><br>Cha của Jewelry Bonney.<br><br>Thành viên Quân Cách Mạng (bí mật).<br><br>Cựu quốc vương Sorbet.</p>', bounty: '296,000,000', haki: ['Haki Vũ Trang'], fruit: 'Nikyu Nikyu no Mi', img: 'https://media1.tenor.com/m/0lGk09e-pWgAAAAd/kuma-saturn.gif', quote: 'Nếu ngươi chịu được nó, ta sẽ để các ngươi sống (Kuma vs Zoro)<br><br>Ta sẽ bảo vệ con tàu này đến ngày chúng quay lại.<br><br>Nếu người ta sinh ra đã định sẵn đời nô lệ... Thì còn ra đời làm gì nữa? (Kuma vs Saturn)<br><br>Em hãy an giấc nhé Ginny... Anh hứa... sẽ nuôi con lớn khôn<br><br>Vị thánh ư? Tôi chỉ là... Một Paci-Fista (Người yêu hòa bình) bé nhỏ mà thôi (Kuma vs Vegapunk).<br><br>Tôi sẽ đón nhận bất kỳ số mệnh nào... Miễn là Bonney được cứu chữa!<br><br>Thằng nhỏ ra tay để bảo vệ cho một người cá! Luffy Mũ Rơm... Chưa từng có kẻ nào dám ra tay dứt khoát như thế... Suốt hàng trăm năm nay! Đó là phản loạn!!<br><br>Con nhầm rồi...!! Ta chỉ cho con thấy được đẳng cấp sức mạnh con cần phải có được ở tân thế giới mà thôi. Con và những người bạn con còn chưa sẵn sàng đâu. Đừng vội đi vào đó... Nhé... Một ngày nào đó các con sẽ... cứu lấy thế giới này!!<br><br>Tôi không thể nói mình biết ơn bao nhiêu cho đủ... Cảm ơn ông vì đã cứu Bonney!! Nếu ông gặp lại con bé... Xin nhờ ông... Nói giùm với nó một câu này nha!<br><br>Chúc mừng sinh nhật 10 tuổi của con, Bonney!!' },
-    { name: 'Marshall D. Teach', role: 'Tứ Hoàng<br><br>Thuyền Trưởng Băng Hải Tặc Râu Đen<br><br>Vua của Đảo Hachinosu (Đảo Hải Tặc)', bounty: '3.996.000.000', haki: ['Haki Vũ trang','Haki Quan sát'], fruit: 'Yami Yami no Mi & Gura Gura no Mi', img: 'https://media1.tenor.com/m/EbfVBFAoR40AAAAd/blackbeard-trafalgar-law.gif', quote: 'Định mệnh đã chọn ta để chinh phục thế giới này! Zehahaha!<br><br>Ước mơ của con người… là vô tận.<br><br>Trông ngươi càng ngày càng đẹp trai rồi đấy, Tóc Đỏ nhỉ? Vết sẹo kia trông thật hợp với ngươi lắm.<br><br>Một Bàn Tay Bóng Tối để triệu hồi Hư Vô. Một Bàn Tay Ánh Sáng để rung chuyển bầu trời và uốn cong mặt đất.<br><br>Với Big Mom và Kaido ngã xuống, cả thế giới này sẽ đảo lộn hết! Nghe thú vị nhỉ, Zehahaha!' },
+    { name: 'Marshall D. Teach', role: 'Tứ Hoàng<br><br>Thuyền Trưởng Băng Hải Tặc Râu Đen<br><br>Vua của Đảo Hachinosu (Đảo Hải Tặc)', bounty: '3,996,000,000', haki: ['Haki Vũ trang','Haki Quan sát'], fruit: 'Yami Yami no Mi & Gura Gura no Mi', img: 'https://media1.tenor.com/m/EbfVBFAoR40AAAAd/blackbeard-trafalgar-law.gif', quote: 'Định mệnh đã chọn ta để chinh phục thế giới này! Zehahaha!<br><br>Ước mơ của con người… là vô tận.<br><br>Trông ngươi càng ngày càng đẹp trai rồi đấy, Tóc Đỏ nhỉ? Vết sẹo kia trông thật hợp với ngươi lắm.<br><br>Một Bàn Tay Bóng Tối để triệu hồi Hư Vô. Một Bàn Tay Ánh Sáng để rung chuyển bầu trời và uốn cong mặt đất.<br><br>Với Big Mom và Kaido ngã xuống, cả thế giới này sẽ đảo lộn hết! Nghe thú vị nhỉ, Zehahaha!' },
     { name: 'Shanks', role: 'Tứ Hoàng<br><br>Thuyền trưởng băng hải tặc Tóc Đỏ', bounty: '4,048,900,000', haki: ['Haki Vũ trang','Haki Quan sát','Haki Bá Vương'], fruit: null, img: 'https://media1.tenor.com/m/bhgt_h4KFBwAAAAd/shanks-v-kid.gif', quote: 'Chiếc mũ này, ta gửi lại cho cháu giữ.<br><br>Bọn ta là hải tặc! Chẳng sống theo luật lệ nào hết!<br><br>Có lý do hay không, ta tuyệt đối không cho phép kẻ nào làm hại bạn ta!<br><br>Cánh tay này… ta đặt cược cho một thời đại mới.<br><br>Ta đến đây để kết thúc cuộc chiến này!<br><br>Nếu ta cứ để yên như vậy, niềm tin của mọi người dành cho ta sẽ mất đi.<br><br>Thời đại mới khiến ngươi khiếp sợ đến thế sao?<br><br>Đồng minh của chúng ta thì nổi tiếng là yếu rồi mà.<br><br>Divine Departure.' },
+	{ name: 'Trafalgar D. Water Law', role: 'Thuyền trưởng băng hải tặc Heart.<br><br>Bác sĩ tử thần.<br><br>Cựu Thất Vũ Hải.', bounty: '3,000,000,000', haki: ['Haki Vũ trang','Haki Quan sát'], fruit: 'Ope Ope no Mi', img: 'https://media1.tenor.com/m/daKqL0QViqkAAAAd/law-trafalgar-law.gif', quote: '' },
+	{ name: 'Yamato', role: 'Con trai Kaido.<br><br>Tự nhận là "Kozuki Oden".', bounty: 'Không Bị Truy Nã.', haki: ['Haki Vũ trang','Haki Quan sát','Haki Bá Vương'], fruit: 'Inu Inu no Mi, Model: Okuchi-no-Makami', img: 'https://media1.tenor.com/m/HRTpaJxKLFoAAAAd/one-piece-clash.gif', quote: '' },
   ];
 
 const othersGrid = document.getElementById('othersGrid');
